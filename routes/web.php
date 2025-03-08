@@ -9,6 +9,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('personajes', PersonajeController::class);
     Route::resource('skins', SkinController::class);
 });
+Route::get('personajes/{personaje}/edit', [PersonajeController::class, 'edit'])->name('personajes.edit');
+Route::put('personajes/{personaje}', [PersonajeController::class, 'update'])->name('personajes.update');
+Route::delete('skins/{skin}', [SkinController::class, 'destroy'])->name('skins.destroy');
+
+Route::get('skins/{skin}/edit', [SkinController::class, 'edit'])->name('skins.edit');
+Route::put('skins/{skin}', [SkinController::class, 'update'])->name('skins.update');
 
 Route::get('/', function () {
     return view('welcome');

@@ -37,17 +37,27 @@ class PersonajeController extends Controller
         return view('personajes.edit', compact('personaje'));
     }
 
+    // Actualizar los datos del personaje
     public function update(Request $request, Personaje $personaje)
     {
+        // Validación de los datos
         $request->validate([
-            'nombre' => 'required',
-            'vida' => 'required|integer',
-            'danio' => 'required|integer',
-            'hipercarga' => 'required|in:si,no',
+            'nombre' => 'required|string|max:255',
+            'vida' => 'required|numeric|min:0',
+            'danio' => 'required|numeric|min:0',
+            'hipercarga' => 'required|in:Sí,No',
         ]);
 
-        $personaje->update($request->all());
-        return redirect()->route('personajes.index');
+        // Actualizar los datos del personaje
+        $personaje->update([
+            'nombre' => $request->nombre,
+            'vida' => $request->vida,
+            'danio' => $request->danio,
+            'hipercarga' => $request->hipercarga,
+        ]);
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('personajes.index')->with('success', 'Personaje actualizado correctamente');
     }
 
     public function destroy(Personaje $personaje)

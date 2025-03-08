@@ -29,26 +29,42 @@ class SkinController extends Controller
 
     public function edit(Skin $skin)
     {
+        // Pasamos la skin y los personajes disponibles a la vista
         $personajes = Personaje::all();
         return view('skins.edit', compact('skin', 'personajes'));
     }
 
+    // Actualizar una skin en la base de datos
     public function update(Request $request, Skin $skin)
     {
+        // Validar los datos del formulario
         $request->validate([
-            'nombre' => 'required',
-            'tipo' => 'required',
-            'precio' => 'required|numeric',
+            'nombre' => 'required|string|max:255',
+            'tipo' => 'required|in:Común,Épica,Legendaria',
+            'precio' => 'required|numeric|min:0',
             'personaje_id' => 'required|exists:personajes,id',
         ]);
 
-        $skin->update($request->all());
-        return redirect()->route('personajes.index');
+        // Actualizar la skin
+        $skin->update([
+            'nombre' => $request->nombre,
+            'tipo' => $request->tipo,
+            'precio' => $request->precio,
+            'personaje_id' => $request->personaje_id,
+        ]);
+
+        // Redirigir al usuario con un mensaje de éxito
+        return redirect()->route('personajes.index')->with('success', 'Skin actualizada correctamente');
     }
+
+
 
     public function destroy(Skin $skin)
     {
+        // Eliminar la skin
         $skin->delete();
-        return redirect()->route('personajes.index');
+
+        // Redirigir a la vista principal con un mensaje de éxito
+        return redirect()->route('personajes.index')->with('success', 'Skin eliminada correctamente');
     }
 }
