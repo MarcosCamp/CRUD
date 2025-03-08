@@ -1,3 +1,4 @@
+@auth
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -106,3 +107,76 @@
 </div>
 </body>
 </html>
+@endauth
+@guest
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio</title>
+        <style>
+            /* Estilos generales */
+            body {
+                background-color: #f5f5dc; /* Fondo crema */
+                font-family: 'Arial', sans-serif;
+                color: #6f4f28; /* Texto marrón */
+                text-align: center; /* Centramos el contenido */
+            }
+
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+                margin-bottom: 30px;
+                color: #6f4f28; /* Título en marrón */
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 12px 24px;
+                margin: 10px;
+                border-radius: 8px;
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-size: 18px; /* Botones con texto más grande */
+            }
+
+            .btn-orange {
+                background-color: #ffa500; /* Botón naranja */
+            }
+
+            .btn-orange:hover {
+                background-color: #e67e22; /* Naranja más oscuro en hover */
+            }
+        </style>
+    </head>
+    <body>
+    <h1>INICIO</h1>
+
+    @if (Route::has('login'))
+        <div>
+            @auth
+                <a href="{{ url('/dashboard') }}" class="btn btn-orange">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-orange">Log in</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="btn btn-orange">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
+
+    <!-- Imagen centrada -->
+    <div style="margin-top: 50px;">
+        <a href="image.svg" target="_blank">
+            <img src="https://cdn.custom-cursor.com/collections/139/cover-collection-brawl-stars.png" alt="Imagen" width="900px">
+        </a>
+    </div>
+    </body>
+    </html>
+@endguest
