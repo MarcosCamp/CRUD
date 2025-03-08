@@ -1,4 +1,44 @@
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f5f5dc; /* Fondo crema */
+        font-family: 'Arial', sans-serif;
+        color: #6f4f28; /* Texto marrón */
+    }
 
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #6f4f28; /* Título en marrón */
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #6f4f28;
+    }
+
+    .btn-success {
+        background-color: #ffa500; /* Naranja */
+    }
+
+    .btn-success:hover {
+        background-color: #e67e22; /* Naranja más oscuro */
+    }
+</style>
     <h1>Editar Skin</h1>
 
     <form action="{{ route('skins.update', $skin->id) }}" method="POST">

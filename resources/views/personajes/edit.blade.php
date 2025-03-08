@@ -1,4 +1,57 @@
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #f5f5dc; /* Fondo crema */
+        font-family: 'Arial', sans-serif;
+        color: #6f4f28; /* Texto marrón */
+    }
 
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #6f4f28; /* Título en marrón */
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #6f4f28;
+    }
+
+    button {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 5px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 18px; /* Botones con texto más grande */
+    }
+    button {
+        background-color: #ffa500; /* Naranja */
+    }
+
+    button:hover {
+        background-color: #e67e22; /* Naranja más oscuro */
+    }
+</style>
     <h1>Editar Personaje: {{ $personaje->nombre }}</h1>
 
     <form action="{{ route('personajes.update', $personaje->id) }}" method="POST">

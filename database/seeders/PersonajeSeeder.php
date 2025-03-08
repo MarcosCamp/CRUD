@@ -12,5 +12,5 @@ class PersonajeSeeder extends Seeder
 {
     public function run()
     {
-    }
+}
 }
