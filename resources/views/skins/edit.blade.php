@@ -31,11 +31,24 @@
         color: #6f4f28;
     }
 
-    .btn-success {
+    button {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 5px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 18px; /* Botones con texto más grande */
+    }
+    button {
         background-color: #ffa500; /* Naranja */
     }
 
-    .btn-success:hover {
+    button:hover {
         background-color: #e67e22; /* Naranja más oscuro */
     }
 </style>
