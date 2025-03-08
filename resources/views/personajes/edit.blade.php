@@ -52,14 +52,15 @@
         background-color: #e67e22; /* Naranja más oscuro */
     }
 </style>
-    <h1>Editar Personaje: {{ $personaje->nombre }}</h1>
+<x-nav />
+    <h1>{{__('messages.editarpersonaje')}}: {{ $personaje->nombre }}</h1>
 
     <form action="{{ route('personajes.update', $personaje->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="form-group">
-            <label for="nombre">Nombre del Personaje</label>
+            <label for="nombre">{{__('messages.nombrepersonaje')}}</label>
             <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $personaje->nombre) }}" required>
         </div>
 
@@ -74,12 +75,14 @@
         </div>
 
         <div class="form-group">
-            <label for="hipercarga">¿Hipercarga?</label>
+            <label for="hipercarga">¿{{__('messages.hipercarga')}}?</label>
             <select name="hipercarga" id="hipercarga" class="form-control" required>
-                <option value="Sí" {{ $personaje->hipercarga == 'Sí' ? 'selected' : '' }}>Sí</option>
-                <option value="No" {{ $personaje->hipercarga == 'No' ? 'selected' : '' }}>No</option>
+                <option value="Sí" {{ $personaje->hipercarga == 'Sí' ? 'selected' : '' }}>{{__('messages.si')}}</option>
+                <option value="No" {{ $personaje->hipercarga == 'No' ? 'selected' : '' }}>{{__('messages.no')}}</option>
             </select>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3">Actualizar Personaje</button>
+        <button type="submit" onclick="return confirm('{{__('messages.mensajeconfirmacion')}}') "class="btn btn-success mt-3">{{__('messages.actualizarpersonaje')}}</button>
     </form>
+<x-footer />
+

@@ -162,10 +162,10 @@
             @auth
                 <a href="{{ url('/dashboard') }}" class="btn btn-orange">Dashboard</a>
             @else
-                <a href="{{ route('login') }}" class="btn btn-orange">Log in</a>
+                <a href="{{ route('login') }}" class="btn btn-orange">{{__('messages.iniciarsesion')}}</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn btn-orange">Register</a>
+                    <a href="{{ route('register') }}" class="btn btn-orange">{{__('messages.registrarse')}}</a>
                 @endif
             @endauth
         </div>

@@ -1,3 +1,4 @@
+
 <style>
     /* Estilos generales */
     body {
@@ -42,7 +43,7 @@
     }
 
     tr:nth-child(odd) {
-        background-color: #f5deb3; /* Fondo más oscuro para filas impares */
+        background-color: #fafad2; /* Fondo más oscuro para filas impares */
     }
 
     tr:hover {
@@ -88,10 +89,11 @@
     }
 
 </style>
-    <h1>Personajes y sus Skins</h1>
+<x-nav />
+    <h1>{{__('messages.personajesysusskins')}}</h1>
 
-    <a href="{{ route('personajes.create') }}" class="btn btn-primary">Crear Personaje</a>
-<a href="{{ route('skins.create') }}" class="btn btn-warning">Crear Skin</a> <!-- Botón para Crear Skin -->
+    <a href="{{ route('personajes.create') }}" class="btn btn-primary">{{__('messages.crearpersonaje')}}</a>
+<a href="{{ route('skins.create') }}" class="btn btn-warning">{{__('messages.crearskin')}}</a> <!-- Botón para Crear Skin -->
     {{-- Mensaje de éxito --}}
     @if (session('success'))
         <div class="alert alert-success">
@@ -101,12 +103,12 @@
     <table class="table mt-4">
         <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Vida</th>
-            <th>Daño</th>
-            <th>Hipercarga</th>
-            <th>Skins</th>
-            <th>Acciones</th>
+            <th>{{__('messages.nombre')}}</th>
+            <th>{{__('messages.vida')}}</th>
+            <th>{{__('messages.danio')}}</th>
+            <th>{{__('messages.hipercarga')}}</th>
+            <th>{{__('messages.skins')}}</th>
+            <th>{{__('messages.acciones')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -120,23 +122,23 @@
                 <!-- Aquí mostramos las skins asociadas -->
                 <td>
                     @if($personaje->skins->isEmpty())
-                        <p>No tiene skins</p>
+                        <p>{{__('messages.noskins')}}</p>
                     @else
                         <ul>
                             @foreach ($personaje->skins as $skin)
                                 <li>
-                                    <strong>Nombre:</strong> {{ $skin->nombre }} <br>
-                                    <strong>Tipo:</strong> {{ $skin->tipo }} <br>
-                                    <strong>Precio:</strong> ${{ number_format($skin->precio, 2) }} <br>
+                                    <strong>{{__('messages.nombre')}}:</strong> {{ $skin->nombre }} <br>
+                                    <strong>{{__('messages.tipo')}}:</strong> {{ $skin->tipo }} <br>
+                                    <strong>{{__('messages.precio')}}:</strong> ${{ number_format($skin->precio, 2) }} <br>
 
                                     <!-- Botón de editar -->
-                                    <a href="{{ route('skins.edit', $skin->id) }}" class="btn btn-warning btn-sm">Editar Skin</a>
+                                    <a href="{{ route('skins.edit', $skin->id) }}" class="btn btn-warning btn-sm">{{__('messages.editarskin')}}</a>
 
                                     <!-- Formulario para eliminar la skin -->
                                     <form action="{{ route('skins.destroy', $skin->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar esta skin?')">Eliminar Skin</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm({{__('messages.mensajeconfirmacioneliminar')}})">{{__('messages.eliminar')}}</button>
                                     </form>
                                 </li>
                             @endforeach
@@ -146,15 +148,15 @@
 
                 <!-- Acciones para editar y eliminar -->
                 <td>
-                    <a href="{{ route('personajes.edit', $personaje->id) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ route('personajes.edit', $personaje->id) }}" class="btn btn-warning">{{__('messages.editar')}}</a>
                     <form action="{{ route('personajes.destroy', $personaje->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este personaje?')">Eliminar</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm({{__('messages.mensajeconfirmacioneliminar')}})">{{__('messages.eliminar')}}</button>
                     </form>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
-
+<x-footer />

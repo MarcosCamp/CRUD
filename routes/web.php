@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonajeController;
 use App\Http\Controllers\SkinController;
+use App\Http\Controllers\LanguageController;
+//IDIOMAS
+Route::get('/change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');
 
 Route::middleware('auth')->group(function () {
     Route::resource('personajes', PersonajeController::class);
@@ -20,8 +23,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/', function () {
+    return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
