@@ -17,7 +17,7 @@ Route::get('skins/{skin}/edit', [SkinController::class, 'edit'])->name('skins.ed
 Route::put('skins/{skin}', [SkinController::class, 'update'])->name('skins.update');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {

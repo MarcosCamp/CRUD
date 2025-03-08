@@ -52,7 +52,7 @@
     .btn {
         display: inline-block;
         padding: 12px 24px;
-        margin: 5px;
+        margin: 10px;
         border-radius: 8px;
         text-decoration: none;
         color: white;
@@ -66,6 +66,7 @@
     a{
         background-color: #ffa500; /* Botón de editar en naranja */
         transform:scale(1.10);
+
     }
 
     a:hover {
@@ -90,7 +91,7 @@
     <h1>Personajes y sus Skins</h1>
 
     <a href="{{ route('personajes.create') }}" class="btn btn-primary">Crear Personaje</a>
-
+<a href="{{ route('skins.create') }}" class="btn btn-warning">Crear Skin</a> <!-- Botón para Crear Skin -->
     {{-- Mensaje de éxito --}}
     @if (session('success'))
         <div class="alert alert-success">
