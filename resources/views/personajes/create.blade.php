@@ -52,25 +52,34 @@
     }
 </style>
 <x-nav />
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container">
         <h1>{{__('messages.crearPersonaje')}}</h1>
         <form action="{{ route('personajes.store') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="nombre" class="form-label">{{__('messages.nombre')}}</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" >
             </div>
             <div class="mb-3">
                 <label for="vida" class="form-label">{{__('messages.vida')}}</label>
-                <input type="number" class="form-control" id="vida" name="vida" required>
+                <input type="number" class="form-control" id="vida" name="vida" >
             </div>
             <div class="mb-3">
                 <label for="danio" class="form-label">{{__('messages.danio')}}</label>
-                <input type="number" class="form-control" id="danio" name="danio" required>
+                <input type="number" class="form-control" id="danio" name="danio" >
             </div>
             <div class="mb-3">
                 <label for="hipercarga" class="form-label">{{__('messages.hipercarga')}}</label>
-                <select class="form-control" id="hipercarga" name="hipercarga" required>
+                <select class="form-control" id="hipercarga" name="hipercarga" >
                     <option value="si">{{__('messages.si')}}</option>
                     <option value="no">{{__('messages.no')}}</option>
                 </select>

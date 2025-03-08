@@ -54,14 +54,22 @@
 </style>
 <x-nav />
     <h1>{{__('messages.editarskin')}}</h1>
-
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{ route('skins.update', $skin->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="form-group">
             <label for="nombre">{{__('messages.nombreskin')}}</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $skin->nombre) }}" required>
+            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $skin->nombre) }}" >
         </div>
 
         <div class="form-group">
@@ -75,12 +83,12 @@
 
         <div class="form-group">
             <label for="precio">{{__('messages.precio')}}</label>
-            <input type="number" name="precio" id="precio" class="form-control" value="{{ old('precio', $skin->precio) }}" step="0.01" required>
+            <input type="number" name="precio" id="precio" class="form-control" value="{{ old('precio', $skin->precio) }}" step="0.01" >
         </div>
 
         <div class="form-group">
             <label for="personaje_id">{{__('messages.personaje')}}</label>
-            <select name="personaje_id" id="personaje_id" class="form-control" required>
+            <select name="personaje_id" id="personaje_id" class="form-control" >
                 @foreach ($personajes as $personaje)
                     <option value="{{ $personaje->id }}" {{ $skin->personaje_id == $personaje->id ? 'selected' : '' }}>
                         {{ $personaje->nombre }}

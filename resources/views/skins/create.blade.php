@@ -72,25 +72,34 @@
     }
 </style>
 <x-nav />
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container">
         <h1>{{__('messages.crearskin')}}</h1>
         <form action="{{ route('skins.store') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="nombre" class="form-label">{{__('messages.nombre')}}</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" >
             </div>
             <div class="mb-3">
                 <label for="tipo" class="form-label">{{__('messages.tipo')}}</label>
-                <input type="text" class="form-control" id="tipo" name="tipo" required>
+                <input type="text" class="form-control" id="tipo" name="tipo" >
             </div>
             <div class="mb-3">
                 <label for="precio" class="form-label">{{__('messages.precio')}}</label>
-                <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
+                <input type="number" step="0.01" class="form-control" id="precio" name="precio" >
             </div>
             <div class="mb-3">
                 <label for="personaje_id" class="form-label">{{__('messages.personaje')}}</label>
-                <select class="form-control" id="personaje_id" name="personaje_id" required>
+                <select class="form-control" id="personaje_id" name="personaje_id" >
                     @foreach($personajes as $personaje)
                         <option value="{{ $personaje->id }}">{{ $personaje->nombre }}</option>
                     @endforeach

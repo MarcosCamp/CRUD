@@ -53,30 +53,39 @@
     }
 </style>
 <x-nav />
-    <h1>{{__('messages.editarpersonaje')}}: {{ $personaje->nombre }}</h1>
 
+    <h1>{{__('messages.editarpersonaje')}}: {{ $personaje->nombre }}</h1>
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{ route('personajes.update', $personaje->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="form-group">
             <label for="nombre">{{__('messages.nombrepersonaje')}}</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $personaje->nombre) }}" required>
+            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $personaje->nombre) }}" >
         </div>
 
         <div class="form-group">
             <label for="vida">Vida</label>
-            <input type="number" name="vida" id="vida" class="form-control" value="{{ old('vida', $personaje->vida) }}" required>
+            <input type="number" name="vida" id="vida" class="form-control" value="{{ old('vida', $personaje->vida) }}" >
         </div>
 
         <div class="form-group">
             <label for="danio">Daño</label>
-            <input type="number" name="danio" id="danio" class="form-control" value="{{ old('danio', $personaje->danio) }}" required>
+            <input type="number" name="danio" id="danio" class="form-control" value="{{ old('danio', $personaje->danio) }}" >
         </div>
 
         <div class="form-group">
             <label for="hipercarga">¿{{__('messages.hipercarga')}}?</label>
-            <select name="hipercarga" id="hipercarga" class="form-control" required>
+            <select name="hipercarga" id="hipercarga" class="form-control" >
                 <option value="Sí" {{ $personaje->hipercarga == 'Sí' ? 'selected' : '' }}>{{__('messages.si')}}</option>
                 <option value="No" {{ $personaje->hipercarga == 'No' ? 'selected' : '' }}>{{__('messages.no')}}</option>
             </select>
