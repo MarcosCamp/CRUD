@@ -38,4 +38,6 @@ return [
     'epica' => 'epic',
     'legendaria' => 'legendary',
     'actualizarskin' => 'update skin',
+    'verpersonajes' => 'look up characters',
+    'welcome'=>'Welcome to brawl stars web!',
 ];

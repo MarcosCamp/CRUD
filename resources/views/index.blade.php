@@ -92,7 +92,7 @@
     </style>
 </head>
 <body>
-<h1>Bienvenido a la Página Principal</h1>
+<h1>{{__('messages.welcome')}}</h1>
 
 <!-- Enlace a la imagen SVG -->
 <div style="text-align: center;">
@@ -103,7 +103,7 @@
 
 <!-- Botón que redirige a /personajes -->
 <div style="text-align: center; margin-top: 30px;">
-    <a href="/personajes" class="btn btn-success">Ver Personajes</a>
+    <a href="/personajes" class="btn btn-success">{{__('messages.verpersonajes')}}</a>
 </div>
 </body>
 </html>
@@ -114,7 +114,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
+        <title>{{__('messages.inicio')}}</title>
         <style>
             /* Estilos generales */
             body {
@@ -155,7 +155,7 @@
         </style>
     </head>
     <body>
-    <h1>INICIO</h1>
+    <h1>{{__('messages.inicio')}}</h1>
 
     @if (Route::has('login'))
         <div>

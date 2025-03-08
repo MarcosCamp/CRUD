@@ -38,4 +38,6 @@ return [
     'epica'=>'épica',
     'legendaria'=>'legendaria',
     'actualizarskin'=> 'actualizar skin',
+    'verpersonajes'=>'ver personajes',
+    'welcome'=>'Bienvenido a la página de Brawl Stars!'
 ];
